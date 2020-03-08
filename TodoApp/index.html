@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+<body>
+    HTML HERE
+    <script>
+        console.log("Hello World")
+        var TodoList={
+            TodoArray:[],
+            //refactoring
+            //DisplayTodos:function (){//function name can be removed
+            //    console.log("TodoList: ",this.TodoArray);
+            //}
+            DisplayTodos:function (){//function name can be removed
+                console.log("TodoList: ");
+                for(i=0;i<this.TodoArray.length;i++){
+                    console.log(this.TodoArray[i].text);
+                }
+            },
+            AddTodos:function (TodoText){
+               // this.TodoArray.push(TodoText);
+               this.TodoArray.push({
+                       completed:false,
+                       text:TodoText
+                   });
+                this.DisplayTodos();            
+            },
+            ChangeTodos:function (index,changetext){
+                //ChangeTodos:function (index,changetext){
+                //this.TodoArray[index]=changeitem;
+                this.TodoArray[index].text=changetext;
+                this.DisplayTodos();            
+            },
+            DeleteTodos:function (index){
+                this.TodoArray.splice(index,1)
+                this.DisplayTodos();            
+            },
+            ToggleTodos:function (index){
+                this.TodoArray[index].completed=true;
+                this.DisplayTodos();            
+            }                     
+        }
+            TodoList.AddTodos("item 1");
+            TodoList.AddTodos("item 2");
+            TodoList.AddTodos("item 3");
+
+    </script>
+</body>
+</html>
